@@ -7,6 +7,7 @@ public class ContactListUI extends JPanel implements ActionListener{
 	private JButton to;
 	private JButton addContacts;
 	private JButton removeContacts;
+	private JButton editContacts;
 
 	public ContactListUI(){
 		//Set up the To: and From: panel
@@ -20,11 +21,13 @@ public class ContactListUI extends JPanel implements ActionListener{
 		
 		//Set up the panel for addContacts and removeContacts;
 		JPanel buttonPanel = new JPanel();
-		addContacts = new JButton("Add Contacts");
-		removeContacts = new JButton("Remove Contacts");
+		addContacts = new JButton("Add");
+		removeContacts = new JButton("Remove");
+		editContacts = new JButton("Edit");
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.add(addContacts);
 		buttonPanel.add(removeContacts);
+		buttonPanel.add(editContacts);
 		
 		//Set up the panel with the contact selection and buttons
 		JPanel dynPanel = new JPanel();
@@ -47,6 +50,51 @@ public class ContactListUI extends JPanel implements ActionListener{
 		this.add(dynPanel);
 	}
 	
+	public void addContactWindow(){
+	JFrame addWindow = new JFrame("Add a Contact");
+			addWindow.setLayout(new FlowLayout());
+			JTextField[] fields = new JTextField[3];
+			for(int i = 0; i < fields.length; i++){
+				fields[i] = new JTextField("", 15);
+			}
+			addWindow.add(new JLabel("Email Address: "));
+			addWindow.add(fields[0]);
+			addWindow.add(new JLabel("First Name: "));
+			addWindow.add(fields[1]);
+			addWindow.add(new JLabel("Last Name: "));
+			addWindow.add(fields[2]);
+			addWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+			addWindow.pack();
+			addWindow.setVisible(true);
+		}
+	public void removeContactWindow(){
+		JFrame removeWindow = new JFrame("Remove Contacts");
+		removeWindow.setLayout(new FlowLayout());
+		//Add List here
+		removeWindow.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		removeWindow.pack();
+		removeWindow.setVisible();
+		
+	}
+	
+	public void toSendWindow(){
+		JFrame toWindow = new JFrame("Send Email To");
+		toWindow.setLayout(new FlowLayout());
+		//Add List
+		toWindow.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		toWindow.pack();
+		toWindow.setVisible();
+	}
+	
+	
+	public void	editContactWindow(){
+		JFrame editWindow = new JFrame("Edit Contacts");
+		toWindow.setLayout(new FlowLayout());
+		//Add List
+		toWindow.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		toWindow.pack();
+		toWindow.setVisible();
+	}
 	
 	public void actionPerformed(ActionEvent e){
 		if(to == e.getSource()){
@@ -54,14 +102,26 @@ public class ContactListUI extends JPanel implements ActionListener{
 			//puts user selection into JTextField to
 		}
 		else if(addContacts == e.getSource()){
+			addContactWindow();
 			//Display prompt for information for new contact
 			//Uses information to add to ContactList collection
+			//
 		}
 		else if(removeContacts == e.getSource()){
 			//Display prompt for removing contacts
 			//Uses information to remove from ContactList collection
 		}
+		else if(editContacts == e.getSource()){
+			//UI for editing contacts
+		}
 	}
+	
+	//public String giveEmail(){
+		//return toText.getText();
+		//Create method to give email address as a string to
+		//EmailSender class
+	//}
+	
 	
 	//Debugging
 	public static void main(String[] args){
