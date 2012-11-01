@@ -104,7 +104,7 @@ public class ContactList
 				contactsString += "\n";
 			contactsString += contacts.get(i).getFirstName() + " ";
 			contactsString += contacts.get(i).getLastName() + " ";
-			contactsString += contacts.get(i).getEmail();
+			contactsString += contacts.get(i).getEmailAddress();
 		}
 		return contactsString;
 	}
@@ -116,7 +116,7 @@ public class ContactList
 			tag += "FIRSTN" + contact.getFirstName() + " ";
 		if (contact.getLastName() != "")
 			tag += "LASTN" + contact.getLastName() + " ";
-		tag += contact.getEmail();
+		tag += contact.getEmailAddress();
 		return tag;
 	}
 
@@ -124,10 +124,10 @@ public class ContactList
 	{
 		Contact person = new Contact();
 		String toSet = "";
-		String[] infoArray = fileLine.split("/ /");
+		String[] infoArray = fileLine.split(" ");
 
 		if (infoArray.length == 1)
-			person.setEmail(infoArray[0]);
+			person.setEmailAddress(infoArray[0]);
 		else if (infoArray.length == 2)
 		{
 			if (infoArray[0].contains("FIRSTN"))
@@ -135,13 +135,13 @@ public class ContactList
 			else
 				person.setLastName(infoArray[0].substring(5));
 
-			person.setEmail(infoArray[1]);
+			person.setEmailAddress(infoArray[1]);
 		}
 		else if (infoArray.length == 3)
 		{
 			person.setFirstName(infoArray[0].substring(6));
 			person.setLastName(infoArray[1].substring(5));
-			person.setEmail(infoArray[2]);
+			person.setEmailAddress(infoArray[2]);
 		}
 
 		return person;
