@@ -50,9 +50,9 @@ public class emailInterface extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){
 		if(sendButton == event.getSource()){
-			//GmailSender sender = new GmailSender("stealthisemail123@gmail.com", "this-is-a-password");
-			//contactArray = contactList.giveEmail();
-			//sender.sendMail(contactArray, subjectLine.getText(), messageArea.getText());
+			GmailSender sender = new GmailSender("stealthisemail123@gmail.com", "this-is-a-password");
+			contactArray = contactList.giveEmail();
+			sender.sendMail(contactArray, subjectLine.getText(), messageArea.getText());
 		}
 		
 	}
